@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 const TaskList = (props) => {
 
-    const {tasks} = props;
+    const {tasks,setTaskDone} = props;
     console.log(props);
 
     return (
@@ -14,7 +14,7 @@ const TaskList = (props) => {
                 <li key={index}>
                     {el.name}
                     {
-                        el.done?"":<button onClick={onDoneHandler}>Done</button>
+                        el.done?"":<button onClick={() => setTaskDone(index)}>Done</button>
                     }
                     <button onClick={onRemoveHandler}>Remove</button>
                 </li>
@@ -31,11 +31,11 @@ const onRemoveHandler = () => {
     console.log("onRemoveHandler")
 };
 
-const mapStateToPorps = state => ({...state});
+const mapStateToProps = state => ({...state});
 const mapActionsToProps = dispatch =>{
     return {
         setTaskDone: task => dispatch(doneTask(task))
     }
 };
 
-export default connect(mapStateToPorps,mapActionsToProps)(TaskList);
+export default connect(mapStateToProps,mapActionsToProps)(TaskList);

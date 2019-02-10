@@ -17,7 +17,6 @@ export const reducer = (state=initState,action) => {
                 ...state, tasks: [...state.tasks, {name: action.payload, done:false}]
             };
         case DONE_TASK:
-            // state.tasks[action.payload].done = true;
             return {
                 // ...state, tasks: state.tasks
                 ...state, tasks: state.tasks.map((el, i) => action.payload === i?{...el, done:true}:el)
