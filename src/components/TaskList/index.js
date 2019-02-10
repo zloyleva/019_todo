@@ -1,8 +1,12 @@
 import React from 'react';
+import {bindActionCreators} from "redux";
+import {doneTask} from "../../store/actions";
+import {connect} from "react-redux";
 
-export const TaskList = (props) => {
+const TaskList = (props) => {
 
     const {tasks} = props;
+    console.log(props);
 
     return (
         <ul>
@@ -26,3 +30,12 @@ const onDoneHandler = () => {
 const onRemoveHandler = () => {
     console.log("onRemoveHandler")
 };
+
+const mapStateToPorps = state => ({...state});
+const mapActionsToProps = dispatch =>{
+    return {
+        setTaskDone: task => dispatch(doneTask(task))
+    }
+};
+
+export default connect(mapStateToPorps,mapActionsToProps)(TaskList);
