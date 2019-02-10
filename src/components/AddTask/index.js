@@ -52,7 +52,6 @@ class AddTask extends Component{
                                 <form className={classes.form} onSubmit={(event) => {
                                     this.submitHandler(event, addNewTask)
                                 }}>
-                                    {/*<input type="text"/>*/}
                                     <TextField
                                         id="outlined-name"
                                         label="Enter new Task"
@@ -62,8 +61,7 @@ class AddTask extends Component{
                                         margin="normal"
                                         variant="outlined"
                                     />
-                                    {/*<button>Add task</button>*/}
-                                    <Button variant="outlined" color="primary" className={classes.button}>
+                                    <Button type="submit" variant="outlined" color="primary" className={classes.button}>
                                         Add task
                                     </Button>
                                 </form>
