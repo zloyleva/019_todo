@@ -23,14 +23,6 @@ const TaskList = (props) => {
     )
 };
 
-const onDoneHandler = () => {
-    console.log("onDoneHandler")
-};
-
-const onRemoveHandler = () => {
-    console.log("onRemoveHandler")
-};
-
 const mapStateToProps = state => ({...state});
 const mapActionsToProps = dispatch =>{
     return {

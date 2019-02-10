@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
 
+import Header from "./Layouts/Header";
 import TaskList from "./components/TaskList";
 import {addNewTask} from "./store/actions";
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+});
+
 class App extends Component {
     render() {
         console.log(this.props);
-        const {tasks, addNewTask} = this.props;
+        const {tasks, addNewTask, classes} = this.props;
 
         return (
-            <div className="App">
-                <form action="" onSubmit={(event)=>{
-                    this.submitHandler(event, addNewTask)
-                }}>
-                    <input type="text"/>
-                    <button>Add task</button>
-                </form>
+            <div className={classes.root}>
 
-                <TaskList tasks={tasks}/>
+                <Header/>
+
+                <Grid container spacing={24}>
+                    <form action="" onSubmit={(event)=>{
+                        this.submitHandler(event, addNewTask)
+                    }}>
+                        <input type="text"/>
+                        <button>Add task</button>
+                    </form>
+
+                    <TaskList tasks={tasks}/>
+                </Grid>
             </div>
         );
     }
@@ -45,7 +61,7 @@ const putActionsToComponent = (dispatch) => {
     }
 };
 
-export default connect(
+export default withStyles(styles)(connect(
     putStateToProps,
     putActionsToComponent
-)(App);
+)(App));
